@@ -23,13 +23,13 @@ export default function Navbar({ className }: { className: string }) {
       Icon: SiX
     },
     {
-      link: "https://drive.google.com/file/d/1s02k95a92s40g5kO7g62w-k8834g8Z9/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1SCc5ssWvlddMHPmYEs_GdXpYHg8Ay2Dh/view?usp=sharing",
       label: "Resume",
       Icon: FaFilePdf
     }
   ]
   return (
-    <nav className={cn('py-10 flex justify-between items-center', className)}>
+    <nav className={cn('py-4 flex justify-between items-center', className)}>
       <h1 className='text-2xl font-bold underline underline-offset-8 decoration-green-500 -rotate-2'>Tejas 🧑🏻‍💻</h1>
 
       <div className='flex items-center gap-5'>

@@ -43,7 +43,7 @@ const ChatInterface: React.FC = () => {
     }, [messages]);
 
     return (
-        <div className="ml-12 fixed bottom-4 right-4 z-50">
+        <div className="ml-4  fixed bottom-4 right-4 z-50">
             <AnimatePresence>
                 {showChat && (
                     <motion.div
@@ -52,7 +52,7 @@ const ChatInterface: React.FC = () => {
                         animate={{ opacity: 1, x: 0 }}  // Slide in to position
                         exit={{ opacity: 0, x: 300 }}  // Slide out to the right
                         transition={{ duration: 0.5 }}
-                        className="mb-4 max-w-full sm:w-96 w-[90%] dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700"
+                        className="mb-2 max-w-full sm:w-96 dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700"
                     >
                         <div className="p-4 border-b border-gray-200 dark:border-gray-700 relative">
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -67,7 +67,7 @@ const ChatInterface: React.FC = () => {
                         </div>
 
                         <div
-                            className="h-96 overflow-hidden p-4 space-y-4"
+                            className="h-80 overflow-hidden p-4 space-y-4"
                             style={{ display: "flex", flexDirection: "column", overflowY: "auto" }}
                         >
                             {messages.length === 0 ? (

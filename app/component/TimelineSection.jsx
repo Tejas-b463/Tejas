@@ -169,8 +169,9 @@ export default function TimelineSection() {
   return (
      <div className='mt-14'>
             <Title text="Education 🎓" className='flex flex-col items-center justify-center
-            -rotate-6'/>
+            rotate-6'/>
             < Timeline data={data} />
         </div>
+      
   )
 }
