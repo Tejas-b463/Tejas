@@ -5,9 +5,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import Title from "./Title";
+import toast, { Toaster } from "react-hot-toast";
 
 export function SignupFormDemo() {
-
     const form = useRef<HTMLFormElement | null>(null);
 
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,6 +15,7 @@ export function SignupFormDemo() {
 
         if (!form.current) {
             console.error("Form reference is null!");
+            toast.error("Form reference is missing.");
             return;
         }
 
@@ -28,17 +29,21 @@ export function SignupFormDemo() {
             .then(
                 (result) => {
                     console.log("SUCCESS!", result.status, result.text);
-                    alert("Message sent successfully!");
+                    toast.success("Message sent successfully!");
+                    form.current?.reset();
                 },
                 (error) => {
                     console.error("FAILED...", error.text || error);
-                    alert("Failed to send message.");
+                    toast.error("Failed to send message.");
                 }
             );
     };
 
     return (
         <div className="mt-14">
+            {/* Toast Container */}
+            <Toaster position="top-center" />
+
             <Title text="Contact 📨" className="flex flex-col items-center justify-center -rotate-6" />
             <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
                 <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
@@ -49,16 +54,16 @@ export function SignupFormDemo() {
                     <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
                         <LabelInputContainer>
                             <Label htmlFor="firstname">First name</Label>
-                            <Input id="firstname" placeholder="Tejas" type="text" name="user_name" required />
+                            <Input id="firstname" placeholder="Neymar" type="text" name="user_name" required />
                         </LabelInputContainer>
                         <LabelInputContainer>
                             <Label htmlFor="lastname">Last name</Label>
-                            <Input id="lastname" placeholder="Banait" type="text" name="user_lastname" />
+                            <Input id="lastname" placeholder="Jr" type="text" name="user_lastname" />
                         </LabelInputContainer>
                     </div>
                     <LabelInputContainer className="mb-4">
                         <Label htmlFor="email">Email Address</Label>
-                        <Input id="email" placeholder="tejasbanait007@gmail.com" type="email" name="user_email" required />
+                        <Input id="email" placeholder="neymar10@gmail.com" type="email" name="user_email" required />
                     </LabelInputContainer>
                     <LabelInputContainer className="mb-4">
                         <Label htmlFor="text">Message</Label>
@@ -66,7 +71,7 @@ export function SignupFormDemo() {
                             id="text"
                             placeholder="Hey 👋...."
                             name="message"
-                            className="h-32 w-full p-2 rounded-md "
+                            className="h-32 w-full p-2 rounded-md"
                             required
                         ></textarea>
                     </LabelInputContainer>

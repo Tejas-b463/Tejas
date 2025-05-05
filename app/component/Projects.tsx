@@ -1,5 +1,5 @@
 import React from 'react'
-import { SiFirebase, SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss } from 'react-icons/si'
+import { SiFirebase, SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si'
 import Title from './Title'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
@@ -17,20 +17,20 @@ export default function Projects() {
         {
             title: 'Shoppi Ecommerce Platform',
             tech: [SiReact, SiTailwindcss, SiRedux, SiFirebase],
-            link: 'https://product-catalog-db189.web.app/',
-            cover: '/shoppi.png',
+            link: 'https://shoppi-e-commerce.vercel.app/',
+            cover: '/shop.png',
             background: "bg-indigo-500"
         },
         {
-            title: 'Moivx Watch Movie',
+            title: 'InstantEat food deliver',
             tech: [SiReact, SiTailwindcss, SiRedux, SiFirebase],
-            link: 'https://moive-apps.vercel.app/',
-            cover: '/movie.png',
+            link: 'https://github.com/Tejas-b463/FoodDelivery',
+            cover: '/fooddeliver.png',
             background: "bg-cyan-500"
         },
         {
             title: 'Portfolio',
-            tech: [SiNextdotjs, SiTailwindcss],
+            tech: [SiNextdotjs, SiTypescript, SiTailwindcss],
             link: '',
             cover: '/project.png',
             background: "bg-fuchsia-500"
