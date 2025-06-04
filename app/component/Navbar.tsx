@@ -1,8 +1,9 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react'
-import { SiLinkedin, SiGithub, SiX } from "react-icons/si";
+import { SiLinkedin, SiGithub} from "react-icons/si";
 import { FaFilePdf } from "react-icons/fa6";
+import { RiDashboardFill } from "react-icons/ri";
 
 export default function Navbar({ className }: { className: string }) {
 
@@ -17,15 +18,15 @@ export default function Navbar({ className }: { className: string }) {
       label: "Github",
       Icon: SiGithub
     },
-    {
-      link: "https://github.com/Tejas-b463",
-      label: "x",
-      Icon: SiX
-    },
-    {
+     {
       link: "https://drive.google.com/file/d/1SCc5ssWvlddMHPmYEs_GdXpYHg8Ay2Dh/view?usp=sharing",
       label: "Resume",
       Icon: FaFilePdf
+    },
+    {
+      link: "/",
+      lable: "Dashboard",
+      Icon: RiDashboardFill
     }
   ]
   return (

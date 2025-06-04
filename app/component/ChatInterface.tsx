@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BsDash } from "react-icons/bs";
+
 
 interface Message {
     type: "question" | "answer";
@@ -9,91 +9,118 @@ interface Message {
 }
 
 const predefinedQuestions: { title: string; content: string }[] = [
-    { title: "Tell me about yourself", content: "Tell me about yourself" },
-    { title: "What is your proudest project?", content: "What is your proudest project?" },
-    { title: "What is your biggest achievement?", content: "What is your biggest achievement?" },
-    { title: "What is your tech stack?", content: "What is your tech stack?" },
+  { title: "Tell me about yourself", content: "Tell me about yourself" },
+  { title: "What is your tech stack?", content: "What is your tech stack?" },
+  { title: "What kind of projects have you built?", content: "What kind of projects have you built?" },
+  { title: "Are you comfortable working with backend?", content: "Are you comfortable working with backend?" }
 ];
 
 const answers: Record<string, string> = {
-    "Tell me about yourself": `Based in India, I'm a web developer passionate about building modern web applications that users love.`,
-    "What is your proudest project?": `I have worked on many projects, but the one I'm most proud of is a real-time chat platform called Talko. You can visit for more details.`,
-    "What is your biggest achievement?": `My biggest achievement is successfully helping countless developers turn their ideas into reality. I take pride in providing detailed, practical solutions while teaching best practices and modern development techniques. Every successful project and every developer I help grow is an achievement I cherish.`,
-    "What is your tech stack?": `My tech stack includes React.js and JavaScript for frontend development, Tailwind CSS for styling, Node.js as a backend with MongoDB as the database, and Firebase for additional backend functionality. I stay updated with the latest technologies and best practices to provide the most current and effective solutions.`,
+  "Tell me about yourself": `Based in India, I'm a web developer passionate about building modern web applications that users love.`,
+  "What is your tech stack?": `I use React, JavaScript, Tailwind CSS, Node.js, MongoDB, and Firebase to build modern, scalable web applications.`,
+  "What kind of projects have you built?": `I built projects like a e-commerce platform, Netflix clone, food delivery app, and full-stack Task Generator Application, Manage & Track Charging Stations.`,
+  "Are you comfortable working with backend?": `Yes, I develop REST APIs with Node.js, Express, MongoDB, and integrate frontend-backend for full-stack applications confidently`
 };
 
 const ChatInterface: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [showChat, setShowChat] = useState<boolean>(false);
+    const [isTyping, setIsTyping] = useState<boolean>(false);
     const chatEndRef = useRef<HTMLDivElement>(null);
 
     const handleQuestionClick = (question: string) => {
-        setMessages((prev) => [
-            ...prev,
-            { type: "question", content: question },
-            { type: "answer", content: answers[question] },
-        ]);
+        setMessages((prev) => [...prev, { type: "question", content: question }]);
+        setIsTyping(true);
+
+        setTimeout(() => {
+            setMessages((prev) => [
+                ...prev,
+                { type: "answer", content: answers[question] }
+            ]);
+            setIsTyping(false);
+        }, 1000);
     };
 
-    // Scroll to bottom whenever messages change
     useEffect(() => {
         if (chatEndRef.current) {
             chatEndRef.current.scrollIntoView({ behavior: "smooth" });
         }
-    }, [messages]);
+    }, [messages, isTyping]);
 
     return (
-        <div className="ml-4  fixed bottom-4 right-4 z-50">
+        <div className="ml-4 fixed bottom-4 right-4 z-50 flex flex-col items-end">
+            {/* Chat Box */}
             <AnimatePresence>
                 {showChat && (
                     <motion.div
                         key="chatbox"
-                        initial={{ opacity: 0, x: 300 }}  // Initial position off-screen to the right
-                        animate={{ opacity: 1, x: 0 }}  // Slide in to position
-                        exit={{ opacity: 0, x: 300 }}  // Slide out to the right
+                        initial={{ opacity: 0, x: 300 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 300 }}
                         transition={{ duration: 0.5 }}
-                        className="mb-2 max-w-full sm:w-96 dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700"
+                        className="mb-2 max-w-full sm:w-[24rem] dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700"
                     >
-                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 relative">
-                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                                👨🏻‍💻 Chat
-                            </h2>
-                            <button
-                                onClick={() => setShowChat(false)}
-                                className="font-bold text-5xl text-gray-500 hover:text-gray-700 dark:text-white absolute top-2 right-2 sm:right-4 md:right-6"
-                            >
-                                <BsDash />
-                            </button>
-                        </div>
+                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 relative flex items-center justify-between">
+  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+    👨🏻‍💻 Chat
+  </h2>
+  <button
+    onClick={() => setShowChat(false)}
+    className="text-gray-500 text-5xl font-bold hover:text-gray-700 dark:text-white"
+    aria-label="Close chat"
+  >
+    –
+  </button>
+</div>
+
 
                         <div
-                            className="h-80 overflow-hidden p-4 space-y-4"
-                            style={{ display: "flex", flexDirection: "column", overflowY: "auto" }}
+                            className="h-64 overflow-hidden p-4 space-y-4 flex flex-col overflow-y-auto"
                         >
                             {messages.length === 0 ? (
-                                <div >
-                                    <p className="text-center text-gray-500 dark:text-gray-400">{"Nice to meet you 👋 I'm Tejas. Try these questions 👇"}</p>
-                                </div>
+                                <p className="text-center text-gray-500 dark:text-gray-400">
+                                    {"Nice to meet you 👋🏻 I'm Tejas. Try these questions 👇🏻"}
+                                </p>
                             ) : (
-                                messages.map((message, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -20 }}
-                                        transition={{ duration: 0.3 }}
-                                        className={`flex ${message.type === "question" ? "justify-end" : "justify-start"}`}
-                                    >
-                                        <div
-                                            className={`max-w-[100%] p-3 rounded-lg ${message.type === "question"
-                                                ? "dark:bg-[#121516] text-white"
-                                                : "dark:text-gray-200"
-                                                }`}
+                                <>
+                                    {messages.map((message, index) => (
+                                        <motion.div
+                                            key={index}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -20 }}
+                                            transition={{ duration: 0.3 }}
+                                            className={`flex items-start gap-2 ${
+                                                message.type === "question"
+                                                    ? "justify-end"
+                                                    : "justify-start"
+                                            }`}
                                         >
-                                            <div className="whitespace-pre-wrap">{message.content}</div>
+                                            {message.type === "answer" && (
+                                                <span className="text-2xl">👩🏻‍💻</span>
+                                            )}
+                                            <div
+                                                className={`max-w-[100%] p-3 rounded-lg ${
+                                                    message.type === "question"
+                                                        ? "dark:bg-[#121516] text-white bg-gray-900"
+                                                        : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+                                                }`}
+                                            >
+                                                <div className="whitespace-pre-wrap">{message.content}</div>
+                                            </div>
+                                            {message.type === "question" && (
+                                                <span className="text-2xl">👩🏻</span>
+                                            )}
+                                        </motion.div>
+                                    ))}
+
+                                    {isTyping && (
+                                        <div className="flex items-center gap-2 text-gray-400 text-sm animate-pulse">
+                                            <span className="text-2xl">👩🏻‍💻</span>
+                                            <span>Tejas is typing...</span>
                                         </div>
-                                    </motion.div>
-                                ))
+                                    )}
+                                </>
                             )}
                             <div ref={chatEndRef} />
                         </div>
@@ -115,19 +142,21 @@ const ChatInterface: React.FC = () => {
                 )}
             </AnimatePresence>
 
-            <AnimatePresence>
+            {/* Bottom Icon */}
+            {!showChat && (
                 <motion.button
-                    key="chatbox"
-                    initial={{ opacity: 0, x: 300 }}  // Initial position off-screen to the right
-                    animate={{ opacity: 1, x: 0 }}  // Slide in to position
-                    exit={{ opacity: 0, x: 300 }}  // Slide out to the right
-                    transition={{ duration: 0.5 }}
-                    onClick={() => setShowChat(!showChat)}
+                    key="chat-icon"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    onClick={() => setShowChat(true)}
                     className="text-white w-16 h-16 sm:w-16 sm:h-16 rounded-full bg-neutral-800 hover:bg-black flex items-center justify-center"
+                    aria-label="Open chat"
                 >
-                    <h1 className="text-2xl sm:text-5xl">👨🏻‍💻</h1>
+                    <h1 className="text-3xl sm:text-5xl">👩🏻‍💻</h1>
                 </motion.button>
-            </AnimatePresence>
+            )}
         </div>
     );
 };

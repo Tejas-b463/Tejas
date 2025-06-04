@@ -3,13 +3,17 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const SpaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
+const SpaceGrotesk = Space_Grotesk({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  // update url 
+  
   metadataBase: new URL("http://localhost:3000"),
 
-  title: "Tejas 🧑🏻‍💻",
+  icons:{
+    icon:'/favicon.svg'
+  },
+
+  title: "Tejas Banait - Software Developer",
   authors: {
     name: "tejas",
   },
