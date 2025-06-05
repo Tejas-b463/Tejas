@@ -12,7 +12,6 @@ export function SignupFormDemo() {
     const [showToaster, setShowToaster] = useState(false);
 
     useEffect(() => {
-        // Only show toaster on client to avoid SSR mismatch
         setShowToaster(true);
     }, []);
 
@@ -46,11 +45,11 @@ export function SignupFormDemo() {
     };
 
     return (
-        <div className="mt-14">
+        <div id="contact" className="mt-14">
             {showToaster && <Toaster position="top-center" />}
 
             <Title text="Contact 📨" className="flex flex-col items-center justify-center -rotate-6" />
-            <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+            <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
                 <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
                     Send me a direct message to connect
                 </p>

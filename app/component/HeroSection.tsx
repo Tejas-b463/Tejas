@@ -15,7 +15,7 @@ export default function HeroSection() {
           {"Based in India, I'm a Full Stack developer passionate about building a modern web application that users love."}
         </p>
         <Link href={"mailto:tejasbanait007@gmail.com"} className='inline-block group'>
-          <Title text='Contact Me 📬' />
+          <Title text='Build Together 🚀' />
         </Link>
       </div>
       <div className='relative'>

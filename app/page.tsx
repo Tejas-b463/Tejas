@@ -7,6 +7,9 @@ import Footer from './component/Footer'
 import TimelineSection from './component/TimelineSection'
 import ChatInterface from './component/ChatInterface'
 import { SignupFormDemo } from './component/SignupFormDemo'
+import GithubGraph from './component/GithubGraph'
+// import { Testimonial } from './component/Testimonial'
+import FloatingNavigate from './component/FloatingNavigate'
 
 export default function page() {
   return (
@@ -23,13 +26,16 @@ export default function page() {
         <Projects />
         <Skills />
 
-        <div className='relative overflow-hidden py-10 md:py-20'>
+        <div id="timeline" className='relative overflow-hidden py-10 md:py-20'>
           <TimelineSection />
         </div>
-
+        <GithubGraph />
+        {/* <Testimonial/> */}
         <SignupFormDemo />
         <Footer />
         <ChatInterface />
+
+        <FloatingNavigate/>
       </div>
     </div>
   )
