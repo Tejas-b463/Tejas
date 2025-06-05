@@ -32,11 +32,11 @@ export default function FloatingNavigate() {
 
   // Animation variants for the container
   const containerVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 10
     },
-    visible: { 
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
@@ -53,13 +53,12 @@ export default function FloatingNavigate() {
     }
   };
 
-  // Animation variants for individual navigation items
   const itemVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 5
     },
-    visible: { 
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
@@ -68,7 +67,6 @@ export default function FloatingNavigate() {
     }
   };
 
-  // Toggle button animation variants
   const buttonVariants = {
     closed: {
       rotate: 0
@@ -98,10 +96,10 @@ export default function FloatingNavigate() {
                 className="flex items-center gap-3 px-4 py-3 bg-gray-900 text-white text-sm rounded-lg border border-gray-700 hover:border-green-500 min-w-[140px] md:min-w-0 transition-colors duration-200"
                 whileTap={{ scale: 0.98 }}
               >
-                <motion.span 
+                <motion.span
                   className="text-green-400"
-                  whileTap={{ 
-                    rotate: 360 
+                  whileTap={{
+                    rotate: 360
                   }}
                   transition={{ duration: 0.3 }}
                 >
@@ -117,11 +115,10 @@ export default function FloatingNavigate() {
       {/* Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className={`p-3 rounded-full text-white transition-colors duration-200 ${
-          isOpen 
-            ? 'bg-indigo-500 hover:bg-indigo-600' 
+        className={`p-3 rounded-full text-white transition-colors duration-200 ${isOpen
+            ? 'bg-indigo-500 hover:bg-indigo-600'
             : 'bg-green-500 hover:bg-green-600'
-        }`}
+          }`}
         variants={buttonVariants}
         animate={isOpen ? "open" : "closed"}
         whileTap={{ scale: 0.95 }}
