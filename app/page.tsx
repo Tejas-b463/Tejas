@@ -8,7 +8,6 @@ import TimelineSection from './component/TimelineSection'
 import ChatInterface from './component/ChatInterface'
 import { SignupFormDemo } from './component/SignupFormDemo'
 import GithubGraph from './component/GithubGraph'
-// import { Testimonial } from './component/Testimonial'
 import FloatingNavigate from './component/FloatingNavigate'
 
 export default function page() {
@@ -30,7 +29,6 @@ export default function page() {
           <TimelineSection />
         </div>
         <GithubGraph />
-        {/* <Testimonial/> */}
         <SignupFormDemo />
         <Footer />
         <ChatInterface />
