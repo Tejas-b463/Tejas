@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 export default function HeroSection() {
   return (
     <div
-      className='mt-10 min-h-[70vh] flex flex-col-reverse gap-14 lg:gap-0 lg:flex-row items-center justify-between' >
+      className='min-h-[70vh] flex flex-col-reverse gap-14 lg:gap-0 lg:flex-row items-center justify-between mt-10 md:mt-0' >
       <div className='space-y-10 text-center lg:text-left '>
         <h1 className='text-4xl lg:text-7xl font-bold'>Nice to meet you! 👋<br />{" "} <span className='underline underline-offset-8 decoration-green-500'>{"I'm Tejas"}</span></h1>
         <p className='md:w-96 text-lg text-gray-300'>
