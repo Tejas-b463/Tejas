@@ -10,6 +10,7 @@ import { SignupFormDemo } from './component/SignupFormDemo'
 import GithubGraph from './component/GithubGraph'
 import FloatingNavigate from './component/FloatingNavigate'
 import Marquee from "./component/Marquee"
+import About from './component/About'
 
 export default function page() {
   return (
@@ -23,6 +24,7 @@ export default function page() {
       </div>
       <div className='max-w-7xl mx-auto'>
         <Marquee/>
+        <About/>
         <Projects />
         <Skills />
 

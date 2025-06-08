@@ -51,7 +51,9 @@ export function SignupFormDemo() {
             <Title text="Contact 📨" className="flex flex-col items-center justify-center -rotate-6" />
             <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
                 <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-                    Send me a direct message to connect
+                    Whether you&apos;re looking to build a new website,
+                     improve your existing platform or bring a unique
+                     project to life, I&apos;m here to help.
                 </p>
 
                 <form
@@ -95,7 +97,7 @@ export function SignupFormDemo() {
                         <Label htmlFor="text">Message</Label>
                       <textarea
   id="text"
-  placeholder="Hey 👋...."
+  placeholder="Hi, How you doing 👋🏻"
   name="message"
   className="h-32 w-full p-2 rounded-md bg-zinc-800 border outline-none transition-all duration-200"
   required
