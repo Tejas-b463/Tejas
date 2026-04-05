@@ -9,17 +9,17 @@ interface Message {
 }
 
 const predefinedQuestions: { title: string; content: string }[] = [
-  { title: "Tell me about yourself", content: "Tell me about yourself" },
-  { title: "What is your tech stack?", content: "What is your tech stack?" },
-  { title: "What kind of projects have you built?", content: "What kind of projects have you built?" },
-  { title: "Are you comfortable working with backend?", content: "Are you comfortable working with backend?" }
+    { title: "Tell me about yourself", content: "Tell me about yourself" },
+    { title: "What is your tech stack?", content: "What is your tech stack?" },
+    { title: "What kind of projects have you built?", content: "What kind of projects have you built?" },
+    { title: "Are you comfortable working with backend?", content: "Are you comfortable working with backend?" }
 ];
 
 const answers: Record<string, string> = {
-  "Tell me about yourself": `Based in India, I'm a web developer passionate about building modern web applications that users love.`,
-  "What is your tech stack?": `I use React, JavaScript, Tailwind CSS, Node.js, MongoDB, and Firebase to build modern, scalable web applications.`,
-  "What kind of projects have you built?": `I built projects like a e-commerce platform, Netflix clone, food delivery app, and full-stack Task Generator Application, Manage & Track Charging Stations.`,
-  "Are you comfortable working with backend?": `Yes, I develop REST APIs with Node.js, Express, MongoDB, and integrate frontend-backend for full-stack applications confidently`
+    "Tell me about yourself": `Based in India, I'm a web developer passionate about building modern web applications that users love.`,
+    "What is your tech stack?": `I use React, JavaScript, Tailwind CSS, Node.js, MongoDB, and Firebase to build modern, scalable web applications.`,
+    "What kind of projects have you built?": `I built projects like a e-commerce platform, Netflix clone, food delivery app, and full-stack Task Generator Application, Manage & Track Charging Stations.`,
+    "Are you comfortable working with backend?": `Yes, I develop REST APIs with Node.js, Express, MongoDB, and integrate frontend-backend for full-stack applications confidently`
 };
 
 const ChatInterface: React.FC = () => {
@@ -58,24 +58,24 @@ const ChatInterface: React.FC = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 300 }}
                         transition={{ duration: 0.5 }}
-                        className="mb-2 max-w-full sm:w-[24rem] dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700"
+                        className="fixed inset-0 z-[100] bg-white sm:static sm:inset-auto sm:mb-2 w-full h-[100dvh] sm:h-auto sm:w-[24rem] dark:bg-gray-800 rounded-none sm:rounded-xl shadow-xl border-0 sm:border border-gray-200 dark:border-gray-700 flex flex-col"
                     >
-                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 relative flex items-center justify-between">
-  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-    👨🏻‍💻 Chat
-  </h2>
-  <button
-    onClick={() => setShowChat(false)}
-    className="text-gray-500 text-5xl font-bold hover:text-gray-700 dark:text-white"
-    aria-label="Close chat"
-  >
-    –
-  </button>
-</div>
+                        <div className="p-4 pt-4 sm:pt-4 border-b border-gray-200 dark:border-gray-700 relative flex items-center justify-between shrink-0">
+                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                                👨🏻‍💻 Chat
+                            </h2>
+                            <button
+                                onClick={() => setShowChat(false)}
+                                className="text-gray-500 text-5xl font-bold hover:text-gray-700 dark:text-white"
+                                aria-label="Close chat"
+                            >
+                                –
+                            </button>
+                        </div>
 
 
                         <div
-                            className="h-64 overflow-hidden p-4 space-y-4 flex flex-col overflow-y-auto"
+                            className="flex-1 sm:h-64 sm:flex-none overflow-hidden p-4 space-y-4 flex flex-col overflow-y-auto pb-4"
                         >
                             {messages.length === 0 ? (
                                 <p className="text-center text-gray-500 dark:text-gray-400">
@@ -90,21 +90,19 @@ const ChatInterface: React.FC = () => {
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: -20 }}
                                             transition={{ duration: 0.3 }}
-                                            className={`flex items-start gap-2 ${
-                                                message.type === "question"
+                                            className={`flex items-start gap-2 ${message.type === "question"
                                                     ? "justify-end"
                                                     : "justify-start"
-                                            }`}
+                                                }`}
                                         >
                                             {message.type === "answer" && (
                                                 <span className="text-2xl">👩🏻‍💻</span>
                                             )}
                                             <div
-                                                className={`max-w-[100%] p-3 rounded-lg ${
-                                                    message.type === "question"
+                                                className={`max-w-[100%] p-3 rounded-lg ${message.type === "question"
                                                         ? "dark:bg-[#121516] text-white bg-gray-900"
                                                         : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
-                                                }`}
+                                                    }`}
                                             >
                                                 <div className="whitespace-pre-wrap">{message.content}</div>
                                             </div>
@@ -125,7 +123,7 @@ const ChatInterface: React.FC = () => {
                             <div ref={chatEndRef} />
                         </div>
 
-                        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+                        <div className="p-4 border-t border-gray-200 dark:border-gray-700 shrink-0 pb-8 sm:pb-4">
                             <div className="grid grid-cols-2 gap-2">
                                 {predefinedQuestions.map((question, index) => (
                                     <button

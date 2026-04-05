@@ -6,11 +6,12 @@ import Projects from './component/Projects'
 import Footer from './component/Footer'
 import TimelineSection from './component/TimelineSection'
 import ChatInterface from './component/ChatInterface'
-import { SignupFormDemo } from './component/SignupFormDemo'
-import GithubGraph from './component/GithubGraph'
+import ContactSection from './component/ContactSection'
+// import GithubGraph from './component/GithubGraph'
 import FloatingNavigate from './component/FloatingNavigate'
 import Marquee from "./component/Marquee"
 import About from './component/About'
+import Experience from './component/Experience'
 
 export default function page() {
   return (
@@ -23,20 +24,21 @@ export default function page() {
         <div className='h-10 xl:h-32 bg-gradient-to-t from-black absolute -bottom-5 left-0 xl:bottom-0 w-full'></div>
       </div>
       <div className='max-w-7xl mx-auto'>
-        <Marquee/>
-        <About/>
+        <Marquee />
+        <About />
+        <Experience />
         <Projects />
         <Skills />
 
         <div id="timeline" className='relative overflow-hidden py-10 md:py-20'>
           <TimelineSection />
         </div>
-        <GithubGraph />
-        <SignupFormDemo />
+        {/* <GithubGraph /> */}
+        <ContactSection />
         <Footer />
         <ChatInterface />
 
-        <FloatingNavigate/>
+        <FloatingNavigate />
       </div>
     </div>
   )

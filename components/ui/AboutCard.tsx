@@ -1,12 +1,15 @@
+import Image from 'next/image';
+
 export default function AboutCard() {
   return (
     <div className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-purple-900/80 to-slate-800 shadow-2xl min-h-[36rem]">
       {/* Background coding image */}
       <div className="absolute inset-0">
-        <img 
+        <Image 
           src="/coding-pov.png" 
-          alt="Coding background" 
-          className="w-full h-full object-cover rounded-2xl opacity-60"
+          alt="Coding background"
+          fill
+          className="object-cover rounded-2xl opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl"></div>
       </div>

@@ -1,4 +1,5 @@
 import GitHubCalendar from 'react-github-calendar';
+import Image from 'next/image';
 import Title from './Title';
 
 const GithubGraph = () => {
@@ -23,12 +24,13 @@ const GithubGraph = () => {
         {/* GitHub Streak Card */}
         <div className="text-center">
           <p className="mb-2">🔥 Current Streak</p>
-          <img
+          <Image
             src={`https://streak-stats.demolab.com?user=${username}&theme=dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D`}
             alt="GitHub Streak"
             width={500}
             height={250}
             className="rounded-xl shadow-lg object-contain"
+            unoptimized
           />
 
         </div>
@@ -36,12 +38,13 @@ const GithubGraph = () => {
         {/* Top Languages Card */}
         <div className="text-center">
           <p className="mb-2">🥇 Top Languages</p>
-          <img
+          <Image
             src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=github_dark&hide_border=true`}
             alt="Top Languages"
             width={350}
             height={250}
             className="rounded-xl shadow-lg object-contain"
+            unoptimized
           />
         </div>
       </div>

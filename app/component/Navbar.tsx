@@ -2,15 +2,15 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react'
-import { SiLinkedin, SiGithub} from "react-icons/si";
-import { FaFilePdf } from "react-icons/fa6";
+import { SiGithub } from "react-icons/si";
+import { FaFilePdf, FaLinkedin } from "react-icons/fa6";
 import { RiDashboardFill } from "react-icons/ri";
 import { toast } from 'react-hot-toast';
 
 type SocialItem = {
   link: string;
   label: string;
-  Icon: React.ComponentType<{className?: string | undefined}>;
+  Icon: React.ComponentType<{ className?: string | undefined }>;
 }
 
 
@@ -20,15 +20,15 @@ export default function Navbar({ className }: { className: string }) {
     {
       link: "https://www.linkedin.com/in/tejas-banait/",
       label: "LinkedIn",
-      Icon: SiLinkedin
+      Icon: FaLinkedin
     },
     {
       link: "https://github.com/Tejas-b463",
       label: "Github",
       Icon: SiGithub
     },
-     {
-      link: "https://drive.google.com/file/d/1JEBE9JeuY05Rsw9IpZDXcJpgiI1Dob97/view?usp=sharing",
+    {
+      link: "https://drive.google.com/file/d/1hYB8BNCQ1jjJEfgtwOI7iGy7SH2dSA4d/view?usp=sharing",
       label: "Resume",
       Icon: FaFilePdf
     },
@@ -39,7 +39,7 @@ export default function Navbar({ className }: { className: string }) {
     }
   ];
 
-  const handleDashboardClick = (e: React.MouseEvent<HTMLButtonElement>)=> {
+  const handleDashboardClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     toast.error('Only Admin can Access 🤵🏻‍♀️')
   }
@@ -55,15 +55,15 @@ export default function Navbar({ className }: { className: string }) {
           const Icon = social.Icon;
 
           // If user click Dashboard show toast message
-          if(social.label === "Dashboard"){
-            return(
+          if (social.label === "Dashboard") {
+            return (
               <button
-              key={index}
-              aria-label={social.label}
-              onClick={handleDashboardClick}
-              type='button'
+                key={index}
+                aria-label={social.label}
+                onClick={handleDashboardClick}
+                type='button'
               >
-                <Icon className='size-5 md:size-6 hover:scale-125 transition-all'/>
+                <Icon className='size-5 md:size-6 hover:scale-125 transition-all' />
               </button>
             )
           }

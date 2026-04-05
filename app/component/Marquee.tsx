@@ -7,7 +7,7 @@ import {
   SiMongodb,
   SiJavascript,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiTailwindcss,
   SiGit,
   SiPostman,
@@ -23,7 +23,7 @@ const skills = [
   { text: 'Express', Icon: SiExpress },
   { text: 'JavaScript', Icon: SiJavascript },
   { text: 'HTML5', Icon: SiHtml5 },
-  { text: 'CSS3', Icon: SiCss3 },
+  { text: 'CSS', Icon: SiCss },
   { text: 'Tailwind CSS', Icon: SiTailwindcss },
 ];
 

@@ -13,12 +13,10 @@ import { cn } from "@/lib/utils";
 export function MovingBorderBtn({
     borderRadius = "1.75rem",
     children,
-    as: Component = "button",
     containerClassName,
     borderClassName,
     duration,
     className,
-    ...otherProps
 }: {
     borderRadius?: string;
     children: React.ReactNode;
@@ -30,7 +28,7 @@ export function MovingBorderBtn({
     [key: string]: unknown;
 }) {
     return (
-        <Component
+        <div
             className={cn(
                 "bg-transparent relative text-xl p-[1px] overflow-hidden ",
                 containerClassName
@@ -38,7 +36,6 @@ export function MovingBorderBtn({
             style={{
                 borderRadius: borderRadius,
             }}
-            {...otherProps}
         >
             <div
                 className="absolute inset-0"
@@ -65,7 +62,7 @@ export function MovingBorderBtn({
             >
                 {children}
             </div>
-        </Component>
+        </div>
     );
 }
 
